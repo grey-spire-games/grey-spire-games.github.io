@@ -1,11 +1,12 @@
-___
-title: Grey Spire Games Home
-layout: default
-___
+#Grey Spire Games Home
 
-![image](GreySpireLogo.jpg)
+![GSLogo](GreySpireLogo.jpg)
  
 Welcome to the Grey Spire Games webpage!
+
+# # Heroes of Hedra
+
+[The Heroes of Hedra Ruleset and Reference Cards are available on this webpage](/HoH/main.md)
 
 Check out the editable [Torch Character Sheet](/torchCharSheet/torchCharSheet.html), courtesy of Arborescence
 
