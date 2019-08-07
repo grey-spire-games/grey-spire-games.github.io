@@ -7,6 +7,6 @@ ___
  
 Welcome to the Grey Spire Games webpage!
 
-Check out the editable [Torch Character Sheet](/torchCharSheet.html), courtesy of Arborescence
+Check out the editable [Torch Character Sheet](/torchCharSheet/torchCharSheet.html), courtesy of Arborescence
 
 
