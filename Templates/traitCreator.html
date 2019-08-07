@@ -1,0 +1,7 @@
+<input ng-model="TraitName" placeholder="Trait name"><br/>
+<textarea ng-model="TraitValue" style="width:100%" placeholder="Trait description"></textarea><br/>
+<div ng-repeat="Mod in Mods">
+    <input disabled class="text-center camoflage" ng-value="Mod.Name"><input disabled class="text-center camoflage" ng-value="'+ ' + Mod.Value">
+</div>
+<label>Stat increases (if any):</label><select ng-model="ModName" ng-options="Stat.Name as Stat.Name for Stat in $parent.Main.Character.Stats" class="text-center"  type="text"><option>Target stat</option></select>&nbsp;+&nbsp;<input class="text-center" ng-model="ModValue" style="width:45px" placeholder="(3, -1)" type="number"/>&nbsp;<button type="button" style="border:1px solid black;" class="btn btn-default" ng-click="AddMod()">Add</button><br/>
+<button type="button" style="border:1px solid black;" class="btn btn-default" ng-click="AddTrait()">Create trait!</button>
