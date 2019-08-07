@@ -1,3 +1,7 @@
+___
+layout: default
+___
+
 ![image](GreySpireLogo.jpg)
 
 # Grey Spire Games 
