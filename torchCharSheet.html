@@ -1,0 +1,703 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="Style.css">
+
+</head>
+
+<body ng-app="TCS">
+  <div ng-controller="MainController as Main">
+    <div class="container page" style="padding-top:1%;">
+      <div class="FancyBorder" style="padding:1%;">
+        <div class="row">
+          <div class="col-8">
+            <div class="row">
+              <div class="col-12">
+                <h5 style="margin:0;">Character Name</h5>
+                <input style="width:100%;" type='text' ng-model="Main.Character.Name">
+              </div>
+            </div>
+            <hr class="hr-thick">
+          </div>
+          <div class="col-4">
+            <div class="row">
+              <div class="col-12">
+                <h5 style="margin:0;">Level</h5>
+                <input style="width:100%;" type='text' ng-model="Main.Character.Level">
+              </div>
+            </div>
+            <hr class="hr-thick">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-8">
+            <div class="row">
+              <div class="col-12">
+                <h5 style="margin:0;">Character Concept</h5>
+                <input style="width:100%;" type='text' ng-model="Main.Character.Concept">
+              </div>
+            </div>
+            <hr class="hr-thick">
+          </div>
+          <div class="col-4">
+            <div class="row">
+              <div class="col-12">
+                <h5 style="margin:0;">Experience</h5>
+                <input style="width:100%;" type='text' ng-model="Main.Character.Exp">
+              </div>
+            </div>
+            <hr class="hr-thick">
+          </div>
+        </div>
+        <div class="row align-items-center" style="height:200px">
+          <div class="col-8">
+            <div class="row">
+              <div class="col-3 text-center">
+                <div class="row">
+                  <div class="col-12">
+                    <label ng-click="Main.print()">Health</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12 stat-block">
+                    <div class="Health">
+                      <input class="text-center camoflage" style="width:50%;height:45px;font-size:30px" type="number">
+                      <input class="text-center camoflage" disabled ng-value="Main.Character.GetStat('MaxHealth')"
+                        style="width:50%;height:45px;font-size:30px" type="number">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12">
+                    <label>Max Health</label>
+                  </div>
+                </div>
+              </div>
+              <div class="col-3 text-center">
+                <div class="row">
+                  <div class="col-12">
+                    <label>Mana</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12 stat-block">
+                    <div class="Mana">
+                      <input class="text-center camoflage" style="width:50%;height:45px;font-size:30px" type="number">
+                      <input class="text-center camoflage" disabled ng-value="Main.Character.GetStat('MaxMana')"
+                        style="width:50%;height:45px;font-size:30px" type="number">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12">
+                    <label>Max Mana</label>
+                  </div>
+                </div>
+              </div>
+              <div class="col-3 text-center">
+                <div class="row">
+                  <div class="col-12">
+                    <label>Defense</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12 stat-block">
+                    <div class="Defense">
+                      <input class="text-center camoflage"
+                        style="width:50%;height:45px;font-size:30px" type="number">
+                      <input class="text-center camoflage" disabled ng-value="Main.Character.GetStat('UnDefense')"
+                        style="width:50%;height:45px;font-size:30px" type="number">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12">
+                    <label style="line-height:17px">Unarmored Defense</label>
+                  </div>
+                </div>
+              </div>
+              <div class="col-3 text-center">
+                <div class="row">
+                  <div class="col-12">
+                    <label>Health Regen</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12 stat-block">
+                    <div class="Regen">
+                      <input class="text-center camoflage" disabled ng-value="Main.Character.GetStat('HealthRegen')"
+                        style="width:50%;height:45px;font-size:30px" type="number">
+                      <input class="text-center camoflage" disabled ng-value="Main.Character.GetStat('ManaRegen')"
+                        style="width:50%;height:45px;font-size:30px" type="number">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12">
+                    <label>Mana Regen</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-4 Traits">
+            <div class="row">
+              <div class="col-6 text-right">
+                <label style="line-height:17px;margin-bottom:0;">Combat<br>Trait</label><br>
+                <select class="text-center camoflage"
+                  ng-options="combatMod as combatMod.Value | limitTo : 3 : 0 for combatMod in Main.combatMods"
+                  ng-model="Main.CombatSelector" ng-change="Main.CombatChange()"
+                  style="width:40%;height:40px;font-size:30px"></select>
+              </div>
+              <div class="col-6 text-left">
+                <label style="line-height:17px;margin-bottom:0;">Spellcasting<br>Trait</label><br>
+                <select class="text-center camoflage"
+                  ng-options="spellMod as spellMod.Value | limitTo : 3 : 0 for spellMod in Main.spellMods"
+                  ng-model="Main.SpellCastSelector" ng-change="Main.SpellCastChange()"
+                  style="width:40%;height:40px;font-size:30px"></select>
+              </div><!-- ng-value="Main.Character.GetTrait('SpellCasting') | limitTo : 3 : 0" -->
+            </div>
+            <div class="row">
+              <div class="col-6 text-right">
+                <label style="margin:0;line-height:16px">Combat<br>Modifier</label><br>
+                <input class="text-center camoflage" disabled ng-value="Main.Character.GetStat('CombatModifier')"
+                  style="margin-bottom:10px;width:30%;height:25px;font-size:25px" type='number'>
+              </div>
+              <div class="col-6 text-left">
+                <label style="margin:0;line-height:16px">Spellcasting<br>Modifier</label><br>
+                <input class="text-center camoflage" disabled ng-value="Main.Character.GetStat('SpellModifier')"
+                  style="margin-bottom:10px;width:30%;height:25px;font-size:25px" type='number'>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-5">
+            <div class="row">
+              <div class="col-12">
+                <table class="">
+                  <thead>
+                    <th style="font-size:22px">Traits</th>
+                  </thead>
+                  <tr
+                    ng-repeat="Trait in Main.Character.Traits | filter : {Name:'!Combat'} | filter : {Name:'!SpellCasting'}">
+                    <td>
+                      <h5>{{Trait.Name}}</h5>
+                      <p>{{Trait.Description}}</p>
+                    </td>
+                  </tr>
+                  <tr class="no-print">
+                    <td>
+                      <p style="margin:0;">Add trait</p>
+                      <trait-creator traitc="Main.Character.AddTrait(Trait)" />
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="col-7">
+            <div class="row">
+              <div class="col-4">
+                <table class="">
+                  <thead>
+                    <th class="Stat-Title" style="font-size:22px">Strength</th>
+                    <th>
+                      <button type="button" class="btn btn-sm btn-default no-print"
+                        ng-click="Main.Character.DecreaseStat('Strength')">-</button>
+                    </th>
+                    <th style="font-size:22px">
+                      <div class="text-center text-nowrap" style="position:relative">
+                        {{Main.Character.GetStat('Strength')}}
+                      </div>
+                    </th>
+                    <th>
+                      <button type="button" class="btn btn-sm btn-default no-print"
+                        ng-click="Main.Character.IncreaseStat('Strength')">+</button>
+                    </th>
+                  </thead>
+                  <tr>
+                    <td>Athletics</td>
+                    <td class="text-center text-nowrap">{{Main.Character.GetStatBase('Athletics')}}
+                        <div class="float-right no-print" style="font-size:10px;">
+                            <span style="cursor:pointer" ng-click="Main.Character.IncreaseStat('Athletics')">&#9650;</span><br />
+                            <span style="cursor:pointer" ng-click="Main.Character.DecreaseStat('Athletics')">&#9660;</span>
+                        </div>
+                    </td>
+                    <td>&nbsp;</td>
+                    <td>___</td>
+                  </tr>
+                  <tr>
+                    <td>Intimidation</td>
+                    <td class="text-center text-nowrap">{{Main.Character.GetStatBase('Intimidation')}}
+                        <div class="float-right no-print" style="font-size:10px;">
+                            <span style="cursor:pointer" ng-click="Main.Character.IncreaseStat('Intimidation')">&#9650;</span><br />
+                            <span style="cursor:pointer" ng-click="Main.Character.DecreaseStat('Intimidation')">&#9660;</span>
+                        </div>
+                    </td>
+                    <td>&nbsp;</td>
+                    <td>___</td>
+                  </tr>
+                  <tr>
+                    <td>Might</td>
+                    <td class="text-center text-nowrap">{{Main.Character.GetStatBase('Might')}}
+                        <div class="float-right no-print" style="font-size:10px;">
+                            <span style="cursor:pointer" ng-click="Main.Character.IncreaseStat('Might')">&#9650;</span><br />
+                            <span style="cursor:pointer" ng-click="Main.Character.DecreaseStat('Might')">&#9660;</span>
+                        </div>
+                    </td>
+                    <td>&nbsp;</td>
+                    <td>___</td>
+                  </tr>
+                </table>
+              </div>
+              <div class="col-4">
+                <table class="">
+                  <thead>
+                    <th class="Stat-Title" style="font-size:22px">Dexterity</th>
+                    <th>
+                      <button type="button" class="btn btn-sm btn-default no-print"
+                        ng-click="Main.Character.DecreaseStat('Dexterity')">-</button>
+                    </th>
+                    <th style="font-size:22px">
+                      <div class="text-center text-nowrap" style="position:relative">
+                        {{Main.Character.GetStat('Dexterity')}}
+                      </div>
+                    </th>
+                    <th>
+                      <button type="button" class="btn btn-sm btn-default no-print"
+                        ng-click="Main.Character.IncreaseStat('Dexterity')">+</button>
+                    </th>
+                  </thead>
+                  <tr>
+                    <td>Acrobatics</td>
+                    <td class="text-center text-nowrap">{{Main.Character.GetStatBase('Acrobatics')}}
+                        <div class="float-right no-print" style="font-size:10px;">
+                            <span style="cursor:pointer" ng-click="Main.Character.IncreaseStat('Acrobatics')">&#9650;</span><br />
+                            <span style="cursor:pointer" ng-click="Main.Character.DecreaseStat('Acrobatics')">&#9660;</span>
+                        </div>
+                    </td>
+                    <td>&nbsp;</td>
+                    <td>___</td>
+                  </tr>
+                  <tr>
+                    <td>Burglary</td>
+                    <td class="text-center text-nowrap">{{Main.Character.GetStatBase('Burglary')}}
+                        <div class="float-right no-print" style="font-size:10px;">
+                            <span style="cursor:pointer" ng-click="Main.Character.IncreaseStat('Burglary')">&#9650;</span><br />
+                            <span style="cursor:pointer" ng-click="Main.Character.DecreaseStat('Burglary')">&#9660;</span>
+                        </div>
+                    </td>
+                    <td>&nbsp;</td>
+                    <td>___</td>
+                    <!-- <td class="text-center text-nowrap">{{Main.Character.GetStatMods('Burglary')}}</td> -->
+                  </tr>
+                  <tr>
+                    <td>Craftsmanship</td>
+                    <td class="text-center text-nowrap">{{Main.Character.GetStatBase('Craftsmanship')}}
+                        <div class="float-right no-print" style="font-size:10px;">
+                            <span style="cursor:pointer" ng-click="Main.Character.IncreaseStat('Craftsmanship')">&#9650;</span><br />
+                            <span style="cursor:pointer" ng-click="Main.Character.DecreaseStat('Craftsmanship')">&#9660;</span>
+                        </div>
+                    </td>
+                    <td>&nbsp;</td>
+                    <td>___</td>
+                    <!-- <td class="text-center text-nowrap">{{Main.Character.GetStatMods('Craftsmanship')}}</td> -->
+                  </tr>
+                  <tr>
+                    <td>Stealth</td>
+                    <td class="text-center text-nowrap">{{Main.Character.GetStatBase('Stealth')}}
+                        <div class="float-right no-print" style="font-size:10px;">
+                            <span style="cursor:pointer" ng-click="Main.Character.IncreaseStat('Stealth')">&#9650;</span><br />
+                            <span style="cursor:pointer" ng-click="Main.Character.DecreaseStat('Stealth')">&#9660;</span>
+                        </div>
+                    </td>
+                    <td>&nbsp;</td>
+                    <td>___</td>
+                    <!-- <td class="text-center text-nowrap">{{Main.Character.GetStatMods('Stealth')}}</td> -->
+                  </tr>
+                </table>
+              </div>
+              <div class="col-4">
+                <table class="">
+                  <thead>
+                    <th class="Stat-Title" style="font-size:22px">Stamina</th>
+                    <th>
+                      <button type="button" class="btn btn-sm btn-default no-print"
+                        ng-click="Main.Character.DecreaseStat('Stamina')">-</button>
+                    </th>
+                    <th style="font-size:22px">
+                      <div class="text-center text-nowrap" style="position:relative">
+                        {{Main.Character.GetStat('Stamina')}}
+                      </div>
+                    </th>
+                    <th>
+                      <button type="button" class="btn btn-sm btn-default no-print"
+                        ng-click="Main.Character.IncreaseStat('Stamina')">+</button>
+                    </th>
+                  </thead>
+                  <tr>
+                    <td>Endurance</td>
+                    <td class="text-center text-nowrap">{{Main.Character.GetStatBase('Endurance')}}
+                        <div class="float-right no-print" style="font-size:10px;">
+                            <span style="cursor:pointer" ng-click="Main.Character.IncreaseStat('Endurance')">&#9650;</span><br />
+                            <span style="cursor:pointer" ng-click="Main.Character.DecreaseStat('Endurance')">&#9660;</span>
+                        </div>
+                    </td>
+                    <td>&nbsp;</td>
+                    <td>___</td>
+                  </tr>
+                  <tr>
+                    <td>Fortitude</td>
+                    <td class="text-center text-nowrap">{{Main.Character.GetStatBase('Fortitude')}}
+                        <div class="float-right no-print" style="font-size:10px;">
+                            <span style="cursor:pointer" ng-click="Main.Character.IncreaseStat('Fortitude')">&#9650;</span><br />
+                            <span style="cursor:pointer" ng-click="Main.Character.DecreaseStat('Fortitude')">&#9660;</span>
+                        </div>
+                    </td>
+                    <td>&nbsp;</td>
+                    <td>___</td>
+                  </tr>
+                  <tr>
+                    <td>Toughness</td>
+                    <td class="text-center text-nowrap">{{Main.Character.GetStatBase('Toughness')}}
+                        <div class="float-right no-print" style="font-size:10px;">
+                            <span style="cursor:pointer" ng-click="Main.Character.IncreaseStat('Toughness')">&#9650;</span><br />
+                            <span style="cursor:pointer" ng-click="Main.Character.DecreaseStat('Toughness')">&#9660;</span>
+                        </div>
+                    </td>
+                    <td>&nbsp;</td>
+                    <td>___</td>
+                  </tr>
+                  <tr>
+                    <td>&nbsp;</td>
+                  </tr>
+                </table>
+              </div>
+              <div class="col-4">
+                <table class="">
+                  <thead>
+                    <th class="Stat-Title" style="font-size:22px">Intellect</th>
+                    <th>
+                      <button type="button" class="btn btn-sm btn-default no-print"
+                        ng-click="Main.Character.DecreaseStat('Intellect')">-</button>
+                    </th>
+                    <th style="font-size:22px">
+                      <div class="text-center text-nowrap" style="position:relative">
+                        {{Main.Character.GetStat('Intellect')}}
+                      </div>
+                    </th>
+                    <th>
+                      <button type="button" class="btn btn-sm btn-default no-print"
+                        ng-click="Main.Character.IncreaseStat('Intellect')">+</button>
+                    </th>
+                  </thead>
+                  <tr>
+                    <td>Arcana</td>
+                    <td class="text-center text-nowrap">{{Main.Character.GetStatBase('Arcana')}}
+                        <div class="float-right no-print" style="font-size:10px;">
+                            <span style="cursor:pointer" ng-click="Main.Character.IncreaseStat('Arcana')">&#9650;</span><br />
+                            <span style="cursor:pointer" ng-click="Main.Character.DecreaseStat('Arcana')">&#9660;</span>
+                        </div>
+                    </td>
+                    <td>&nbsp;</td>
+                    <td>___</td>
+                  </tr>
+                  <tr>
+                    <td>Knowledge</td>
+                    <td class="text-center text-nowrap">{{Main.Character.GetStatBase('Knowledge')}}
+                        <div class="float-right no-print" style="font-size:10px;">
+                            <span style="cursor:pointer" ng-click="Main.Character.IncreaseStat('Knowledge')">&#9650;</span><br />
+                            <span style="cursor:pointer" ng-click="Main.Character.DecreaseStat('Knowledge')">&#9660;</span>
+                        </div>
+                    </td>
+                    <td>&nbsp;</td>
+                    <td>___</td>
+                  </tr>
+                  <tr>
+                    <td>Observation</td>
+                    <td class="text-center text-nowrap">{{Main.Character.GetStatBase('Observation')}}
+                        <div class="float-right no-print" style="font-size:10px;">
+                            <span style="cursor:pointer" ng-click="Main.Character.IncreaseStat('Observation')">&#9650;</span><br />
+                            <span style="cursor:pointer" ng-click="Main.Character.DecreaseStat('Observation')">&#9660;</span>
+                        </div>
+                    </td>
+                    <td>&nbsp;</td>
+                    <td>___</td>
+                  </tr>
+                  <tr>
+                    <td>Research</td>
+                    <td class="text-center text-nowrap">{{Main.Character.GetStatBase('Research')}}
+                        <div class="float-right no-print" style="font-size:10px;">
+                            <span style="cursor:pointer" ng-click="Main.Character.IncreaseStat('Research')">&#9650;</span><br />
+                            <span style="cursor:pointer" ng-click="Main.Character.DecreaseStat('Research')">&#9660;</span>
+                        </div>
+                    </td>
+                    <td>&nbsp;</td>
+                    <td>___</td>
+                  </tr>
+                </table>
+              </div>
+              <div class="col-4">
+                <table class="">
+                  <thead>
+                    <th class="Stat-Title" style="font-size:22px">Spirit</th>
+                    <th>
+                      <button type="button" class="btn btn-sm btn-default no-print"
+                        ng-click="Main.Character.DecreaseStat('Spirit')">-</button>
+                    </th>
+                    <th style="font-size:22px">
+                      <div class="text-center text-nowrap" style="position:relative">
+                        {{Main.Character.GetStat('Spirit')}}
+                      </div>
+                    </th>
+                    <th>
+                      <button type="button" class="btn btn-sm btn-default no-print"
+                        ng-click="Main.Character.IncreaseStat('Spirit')">+</button>
+                    </th>
+                  </thead>
+                  <tr>
+                    <td>Insight</td>
+                    <td class="text-center text-nowrap">{{Main.Character.GetStatBase('Insight')}}
+                        <div class="float-right no-print" style="font-size:10px;">
+                            <span style="cursor:pointer" ng-click="Main.Character.IncreaseStat('Insight')">&#9650;</span><br />
+                            <span style="cursor:pointer" ng-click="Main.Character.DecreaseStat('Insight')">&#9660;</span>
+                        </div>
+                    </td>
+                    <td>&nbsp;</td>
+                    <td>___</td>
+                  </tr>
+                  <tr>
+                    <td>Religion</td>
+                    <td class="text-center text-nowrap">{{Main.Character.GetStatBase('Religion')}}
+                        <div class="float-right no-print" style="font-size:10px;">
+                            <span style="cursor:pointer" ng-click="Main.Character.IncreaseStat('Religion')">&#9650;</span><br />
+                            <span style="cursor:pointer" ng-click="Main.Character.DecreaseStat('Religion')">&#9660;</span>
+                        </div>
+                    </td>
+                    <td>&nbsp;</td>
+                    <td>___</td>
+                  </tr>
+                  <tr>
+                    <td>Will</td>
+                    <td class="text-center text-nowrap">{{Main.Character.GetStatBase('Will')}}
+                        <div class="float-right no-print" style="font-size:10px;">
+                            <span style="cursor:pointer" ng-click="Main.Character.IncreaseStat('Will')">&#9650;</span><br />
+                            <span style="cursor:pointer" ng-click="Main.Character.DecreaseStat('Will')">&#9660;</span>
+                        </div>
+                    </td>
+                    <td>&nbsp;</td>
+                    <td>___</td>
+                  </tr>
+                  <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td></td>
+                  </tr>
+                </table>
+              </div>
+              <div class="col-4">
+                <table class="">
+                  <thead>
+                    <th class="Stat-Title" style="font-size:22px">Charisma</th>
+                    <th>
+                      <button type="button" class="btn btn-sm btn-default no-print"
+                        ng-click="Main.Character.DecreaseStat('Charisma')">-</button>
+                    </th>
+                    <th style="font-size:22px">
+                      <div class="text-center text-nowrap" style="position:relative">
+                        {{Main.Character.GetStat('Charisma')}}
+                      </div>
+                    </th>
+                    <th>
+                      <button type="button" class="btn btn-sm btn-default no-print"
+                        ng-click="Main.Character.IncreaseStat('Charisma')">+</button>
+                    </th>
+                  </thead>
+                  <tr>
+                    <td>Deception</td>
+                    <td class="text-center text-nowrap">
+                      {{Main.Character.GetStatBase('Deception')}}
+                      <div class="float-right no-print" style="font-size:10px;">
+                        <span style="cursor:pointer" ng-click="Main.Character.IncreaseStat('Deception')">&#9650;</span><br />
+                        <span style="cursor:pointer" ng-click="Main.Character.DecreaseStat('Deception')">&#9660;</span>
+                      </div>
+                    </td>
+                    <td>&nbsp;</td>
+                    <td>___</td>
+                  </tr>
+                  <tr>
+                    <td>Leadership</td>
+                    <td class="text-center text-nowrap">{{Main.Character.GetStatBase('Leadership')}}
+                        <div class="float-right no-print" style="font-size:10px;">
+                            <span style="cursor:pointer" ng-click="Main.Character.IncreaseStat('Leadership')">&#9650;</span><br />
+                            <span style="cursor:pointer" ng-click="Main.Character.DecreaseStat('Leadership')">&#9660;</span>
+                        </div>
+                    </td>
+                    <td>&nbsp;</td>
+                    <td>___</td>
+                  </tr>
+                  <tr>
+                    <td>Performance</td>
+                    <td class="text-center text-nowrap">{{Main.Character.GetStatBase('Performance')}}
+                        <div class="float-right no-print" style="font-size:10px;">
+                            <span style="cursor:pointer" ng-click="Main.Character.IncreaseStat('Performance')">&#9650;</span><br />
+                            <span style="cursor:pointer" ng-click="Main.Character.DecreaseStat('Performance')">&#9660;</span>
+                        </div>
+                    </td>
+                    <td>&nbsp;</td>
+                    <td>___</td>
+                  </tr>
+                  <tr>
+                    <td>Persuasion</td>
+                    <td class="text-center text-nowrap">{{Main.Character.GetStatBase('Persuasion')}}
+                        <div class="float-right no-print" style="font-size:10px;">
+                            <span style="cursor:pointer" ng-click="Main.Character.IncreaseStat('Persuasion')">&#9650;</span><br />
+                            <span style="cursor:pointer" ng-click="Main.Character.DecreaseStat('Persuasion')">&#9660;</span>
+                        </div>
+                    </td>
+                    <td>&nbsp;</td>
+                    <td>___</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <div>
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th class="text-center" scope="col">Attacks</th>
+                        <th class="text-center" scope="col">Type</th>
+                        <th class="text-center" scope="col">Die</th>
+                        <th class="text-center" scope="col">Bonus</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><input class="text-center camoflage" style="width:100%;" type="text"></td>
+                        <td><input class="text-center camoflage" style="width:100%;" type="text"></td>
+                        <td><input class="text-center camoflage" style="width:100%;" type="text"></td>
+                        <td><input class="text-center camoflage" style="width:100%;" type="text"></td>
+                      </tr>
+                      <tr>
+                        <td><input class="text-center camoflage" style="width:100%" type="text"></td>
+                        <td><input class="text-center camoflage" style="width:100%" type="text"></td>
+                        <td><input class="text-center camoflage" style="width:100%" type="text"></td>
+                        <td><input class="text-center camoflage" style="width:100%" type="text"></td>
+                      </tr>
+                      <tr>
+                        <td><input class="text-center camoflage" style="width:100%" type="text"></td>
+                        <td><input class="text-center camoflage" style="width:100%" type="text"></td>
+                        <td><input class="text-center camoflage" style="width:100%" type="text"></td>
+                        <td><input class="text-center camoflage" style="width:100%" type="text"></td>
+                      </tr>
+                      <tr>
+                        <td><input class="text-center camoflage" style="width:100%" type="text"></td>
+                        <td><input class="text-center camoflage" style="width:100%" type="text"></td>
+                        <td><input class="text-center camoflage" style="width:100%" type="text"></td>
+                        <td><input class="text-center camoflage" style="width:100%" type="text"></td>
+                      </tr>
+                      <tr>
+                        <td><input class="text-center camoflage" style="width:100%" type="text"></td>
+                        <td><input class="text-center camoflage" style="width:100%" type="text"></td>
+                        <td><input class="text-center camoflage" style="width:100%" type="text"></td>
+                        <td><input class="text-center camoflage" style="width:100%" type="text"></td>
+                      </tr>
+                      <tr>
+                        <td><input class="text-center camoflage" style="width:100%" type="text"></td>
+                        <td><input class="text-center camoflage" style="width:100%" type="text"></td>
+                        <td><input class="text-center camoflage" style="width:100%" type="text"></td>
+                        <td><input class="text-center camoflage" style="width:100%" type="text"></td>
+                      </tr>
+                      <tr>
+                        <td><input class="text-center camoflage" style="width:100%" type="text"></td>
+                        <td><input class="text-center camoflage" style="width:100%" type="text"></td>
+                        <td><input class="text-center camoflage" style="width:100%" type="text"></td>
+                        <td><input class="text-center camoflage" style="width:100%" type="text"></td>
+                      </tr>
+                      <tr>
+                        <td><input class="text-center camoflage" style="width:100%" type="text"></td>
+                        <td><input class="text-center camoflage" style="width:100%" type="text"></td>
+                        <td><input class="text-center camoflage" style="width:100%" type="text"></td>
+                        <td><input class="text-center camoflage" style="width:100%" type="text"></td>
+                      </tr>
+                      <tr>
+                        <td><input class="text-center camoflage" style="width:100%" type="text"></td>
+                        <td><input class="text-center camoflage" style="width:100%" type="text"></td>
+                        <td><input class="text-center camoflage" style="width:100%" type="text"></td>
+                        <td><input class="text-center camoflage" style="width:100%" type="text"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <div class="">
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th class="text-center" scope="col">Armor/Equipment</th>
+                        <th class="text-center" scope="col">Bonus</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><input class="text-center camoflage" style="width:100%" type="text"></td>
+                        <td><input class="text-center camoflage" style="width:100%" type="text"></td>
+                      </tr>
+                      <tr>
+                        <td><input class="text-center camoflage" style="width:100%" type="text"></td>
+                        <td><input class="text-center camoflage" style="width:100%" type="text"></td>
+                      </tr>
+                      <tr>
+                        <td><input class="text-center camoflage" style="width:100%" type="text"></td>
+                        <td><input class="text-center camoflage" style="width:100%" type="text"></td>
+                      </tr>
+                      <tr>
+                        <td><input class="text-center camoflage" style="width:100%" type="text"></td>
+                        <td><input class="text-center camoflage" style="width:100%" type="text"></td>
+                      </tr>
+                      <tr>
+                        <td><input class="text-center camoflage" style="width:100%" type="text"></td>
+                        <td><input class="text-center camoflage" style="width:100%" type="text"></td>
+                      </tr>
+                      <tr>
+                        <td><input class="text-center camoflage" style="width:100%" type="text"></td>
+                        <td><input class="text-center camoflage" style="width:100%" type="text"></td>
+                      </tr>
+                      <tr>
+                        <td><input class="text-center camoflage" style="width:100%" type="text"></td>
+                        <td><input class="text-center camoflage" style="width:100%" type="text"></td>
+                      </tr>
+                      <tr>
+                        <td><input class="text-center camoflage" style="width:100%" type="text"></td>
+                        <td><input class="text-center camoflage" style="width:100%" type="text"></td>
+                      </tr>
+                      <tr>
+                        <td><input class="text-center camoflage" style="width:100%" type="text"></td>
+                        <td><input class="text-center camoflage" style="width:100%" type="text"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="js/ui-bootstrap-tpls-3.0.6.js"></script>
+  <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+  <script type="text/javascript" src="js/Angular.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.js"></script>
+  <script type="text/javascript" src="TCS_Controller.js"></script>
+</body>
+
+</html>
