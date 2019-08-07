@@ -1,7 +1,7 @@
 ## Heroes of Hedra
 Heroes of Hedra is a dice-rolling game meant for quick, head to head competition. Before your next tabletop RPG session, break out your polyhedral dice and try and best your fellow dice owners in a game of luck and skill, all while you wait for that last straggler to show up, or for that bowl of snacks to arrive. Best of all, the basic Heroes of Hedra rules are free!
 
-[#### Find the Heroes of Hedra Reference cards here](HoHReferenceCards.pdf)
+#### [Find the Heroes of Hedra Reference cards here](HoHReferenceCards.pdf)
 
 **Object:** Be the first to score 5 points. Play to 3 or 4 for a quicker game.
 
