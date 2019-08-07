@@ -1,12 +1,14 @@
 ## Heroes of Hedra
 Heroes of Hedra is a dice-rolling game meant for quick, head to head competition. Before your next tabletop RPG session, break out your polyhedral dice and try and best your fellow dice owners in a game of luck and skill, all while you wait for that last straggler to show up, or for that bowl of snacks to arrive. Best of all, the basic Heroes of Hedra rules are free!
 
+[#### Find the Heroes of Hedra Reference cards here](HoHReferenceCards.pdf)
+
 **Object:** Be the first to score 5 points. Play to 3 or 4 for a quicker game.
 
 **Game Summary:** Players move and roll dice (representing heroes) to win battlefields, earning points by controlling them. Heroes of different types have different special powers.
 
 **Pieces:** 
-* 1 set of standard polyhedral dice for each player (one each of d4, d6, d8, d10, percentile d10 (also referred to as d10-0), d12 and d20), in different colored sets for each player
+* 1 set of standard polyhedral dice for each player (one each of four-sided (d4), six-sided (d6), eight-sided (d8), ten-sided (d10), percentile ten-sided (percentile d10) (also referred to as d10-0 or d10-%), twelve-sided (d12) and twenty-sided (d20) dice), in different colored sets for each player
 * Extra dice or paper for keeping score
 * Differently colored dice, sheets or paper, or tokens to identify the locations of the battlefields, if needed
 
@@ -35,26 +37,26 @@ Here is a description of how to carry out each action on your turn, including sp
 
 1. March (First Move):
  - You may move a _hero_ from your _home_ to a _battlefield_, or from one _battlefield_ to another. You may also move from a _battlefield_ to your _home_
-   - If you moved a _Cleric (d8)_, you may bring an additional _hero_ from its origin to the destination (this can’t be the _Barbarian (d12)_ if enemies were at the starting point)
-   - If you moved a _Paladin (percentile d10)_, when they arrive at their destination, you may reroll all of your _dice_ (including the _Dragon_) at that location. This is not an attack
-   - If you moved a _Mage_, when they arrive at their destination, you may reroll an enemy _die_ (including the _Dragon_) of your choice at that location
-   - The _Barbarian_ can’t be moved if there are enemies wherever it is
+    - If you moved a _Cleric (d8)_, you may bring an additional _hero_ from its origin to the destination (this can’t be the _Barbarian (d12)_ if enemies were at the starting point)
+    - If you moved a _Paladin (percentile d10)_, when they arrive at their destination, you may reroll all of your _dice_ (including the _Dragon_) at that location. This is not an attack
+    - If you moved a _Mage_, when they arrive at their destination, you may reroll an enemy _die_ (including the _Dragon_) of your choice at that location
+    - The _Barbarian_ can’t be moved if there are enemies wherever it is
    
 2. Attack:
  - Select a _Battlefield_ to attack
  - Pick up and roll all your _heroes_ at that _Battlefield_
  - Assign your _heroes_ in a manner of your choice, distributed as evenly as possible amongst your opponents’ _dice_ at that _Battlefield_. For example, if your opponent has 3 dice at a location and you have 5, first assign one die to each of the opponents, and then assign the remaining 2 to 2 of their dice.
  - For each enemy die where the total _Power_ of the dice attacking them is **greater** than their _Defense_, that die is _defeated_. _Defeated_ dice are sent to their owner’s Home space during cleanup (exceptions are the Rogue and Dragon).
-   - Example: your opponent has a Rogue (Defense 4) and a Cleric (Defense 5) at a battlefield. You decide to attack here because you have a Warrior, Cleric and Paladin. You get some unlucky rolls and roll a 5 on your Paladin, a 4 on your Warrior and a 2 on your Cleric. You first assign 1 hero to each of your opponents dice. You decide to assign the Paladin to your opponent’s Rogue (it will beat the Rogue 5 to 4), and you assign the Warrior to your opponent’s Cleric. You have your own Cleric to assign now, and you assign it to the enemy Cleric as well (the combined 4+2 will beat your opponent’s 5).
+    - Example: your opponent has a Rogue (Defense 4) and a Cleric (Defense 5) at a battlefield. You decide to attack here because you have a Warrior, Cleric and Paladin. You get some unlucky rolls and roll a 5 on your Paladin, a 4 on your Warrior and a 2 on your Cleric. You first assign 1 hero to each of your opponents dice. You decide to assign the Paladin to your opponent’s Rogue (it will beat the Rogue 5 to 4), and you assign the Warrior to your opponent’s Cleric. You have your own Cleric to assign now, and you assign it to the enemy Cleric as well (the combined 4+2 will beat your opponent’s 5).
 
 3. Clean up & Scoring:
  - Move all defeated dice where needed
-   - Heroes go to the opponent’s home space
-   - If defeated, a Dragon returns to its Roost
-   - A defeated Rogue may be moved to another battlefield instead of home
-   - If a piece is defeated where that player has a Warrior, they may have the Warrior be defeated instead
-   - If a Warrior is defeated at a location, it may prevent another piece from being defeated, instead allowing it to move to another battlefield (this includes the Barbarian).
-   - For each die that was defeated, that die’s owner advances their Dragon by 5
+    - Heroes go to the opponent’s home space
+    - If defeated, a Dragon returns to its Roost
+    - A defeated Rogue may be moved to another battlefield instead of home
+    - If a piece is defeated where that player has a Warrior, they may have the Warrior be defeated instead
+    - If a Warrior is defeated at a location, it may prevent another piece from being defeated, instead allowing it to move to another battlefield (this includes the Barbarian).
+    - For each die that was defeated, that die’s owner advances their Dragon by 5
  - If there are no enemies (including Dragons) left at the space you just attacked and you have dice there, you score 1 point!
  - If a Dragon was defeated in a battle, the player who defeated that Dragon scores a point!
  - For each point that was scored, all players advance their Dragons by 3
@@ -66,12 +68,13 @@ Here is a description of how to carry out each action on your turn, including sp
  
 ### The Power of Heroes
 Each Hero die has unique abilities
-**Mage (d4):** The mage is a powerful offensive support hero. When the _Mage arrives at a location, the Mage’s owner may reroll one enemy die there (including the Dragon)_. Furthermore, when the _Mage is attacking, its Power applies to all enemies at that location_, regardless of who the Mage is assigned to.
-**Rogue (d6):** The Rogue is not extremely powerful but is very agile. Played well, you may never need to move the Rogue to benefit from their skills. When the _Rogue is defeated, you may have them move to another Battlefield_ instead of the Home space.
-**Cleric (d8):** The Cleric supports allies in battle. When you _move the Cleric (either during the March or Reinforce phases), you may move an additional hero with them_ (unless something would restrict that additional movement, such as the Barbarian).
-**Warrior (d10):** The Warrior protects their allies. When a friendly die is defeated, you _may sacrifice the Warrior and have them be defeated instead_. Furthermore, when the Warrior is defeated, you may _prevent another friendly die at that location from being defeated that turn. The die saved by the Warrior must retreat to another battlefield_ (this includes a Barbarian where enemies are present
-**Paladin (d10-0):** (The Paladin still rolls as a d10 but can be distinguished from the warrior from the extra zeros). The Paladin inspires his allies. When the Paladin _moves to a location, you may reroll all friendly dice (including the Paladin)_ there. This is not an attack. Furthermore, _after the Paladin is defeated, after combat is finished, you may reroll all surviving friendly dice_ there.
-**Barbarian (d12):** The Barbarian flies into a frenzy. _When attacking, the Barbarian gains +2 Power for each enemy piece at this Battlefield._ Additionally, if a Barbarian is at a battlefield where _at least one die was defeated, after combat and scoring its owner may reroll it._ This is done after any Paladin rerolls, and if turn order matters, the attacking player goes first and the rest follow in turn order. However, the Barbarian is headstrong, and _cannot be moved away from a battlefield where enemies are present_ unless it is defeated.
+
+- **Mage (d4):** The mage is a powerful offensive support hero. When the _Mage arrives at a location, the Mage’s owner may reroll one enemy die there (including the Dragon)_. Furthermore, when the _Mage is attacking, its Power applies to all enemies at that location_, regardless of who the Mage is assigned to.
+- **Rogue (d6):** The Rogue is not extremely powerful but is very agile. Played well, you may never need to move the Rogue to benefit from their skills. When the _Rogue is defeated, you may have them move to another Battlefield_ instead of the Home space.
+- **Cleric (d8):** The Cleric supports allies in battle. When you _move the Cleric (either during the March or Reinforce phases), you may move an additional hero with them_ (unless something would restrict that additional movement, such as the Barbarian).
+- **Warrior (d10):** The Warrior protects their allies. When a friendly die is defeated, you _may sacrifice the Warrior and have them be defeated instead_. Furthermore, when the Warrior is defeated, you may _prevent another friendly die at that location from being defeated that turn. The die saved by the Warrior must retreat to another battlefield_ (this includes a Barbarian where enemies are present
+- **Paladin (d10-0):** (The Paladin still rolls as a d10 but can be distinguished from the warrior from the extra zeros). The Paladin inspires his allies. When the Paladin _moves to a location, you may reroll all friendly dice (including the Paladin)_ there. This is not an attack. Furthermore, _after the Paladin is defeated, after combat is finished, you may reroll all surviving friendly dice_ there.
+- **Barbarian (d12):** The Barbarian flies into a frenzy. _When attacking, the Barbarian gains +2 Power for each enemy piece at this Battlefield._ Additionally, if a Barbarian is at a battlefield where _at least one die was defeated, after combat and scoring its owner may reroll it._ This is done after any Paladin rerolls, and if turn order matters, the attacking player goes first and the rest follow in turn order. However, the Barbarian is headstrong, and _cannot be moved away from a battlefield where enemies are present_ unless it is defeated.
 
 ### The Dragon
 - The Dragon (d20) rests at the Dragon Roost until it is roused to battle. 
