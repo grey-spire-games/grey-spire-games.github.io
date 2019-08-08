@@ -1,2 +1,4 @@
-- title: About
-  url: /about.md
+- title: Home
+  url: /index.md
+- title: Heroes of Hedra
+  url: /HoH/main.md
